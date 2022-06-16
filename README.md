@@ -8,6 +8,10 @@ Examples of Voting Methods and Tabulation, in both python and notebook format.
 
 When single winner methods are equivalent to a multi winner method with one seat, the single winner method is not included for simplicity. For example, Approval Voting and Sequential Proportional Approval Voting yield the same first winner with the same methodology, so Approval Voting is not included as a separate example.
 
+### Tests
+
+`python -m unittest tests/test_methods.py`
+
 ### Rated Methods
 
 - [Sequential Proportional Approval Voting](https://en.wikipedia.org/wiki/Sequential_proportional_approval_voting) (SPAV)

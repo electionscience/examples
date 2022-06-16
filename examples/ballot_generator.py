@@ -2,10 +2,11 @@ import itertools
 import pandas as pd
 
 
-def generate_approval_ballots():
+def generate_approval_ballots(candidates=None):
+    if candidates is None:
+        candidates = ["A", "B", "C", "D", "E", "F"]
     # Compose Ballots
     # candidates = ["Squash", "Potato", "Broccoli", "Blueberry", "Strawberry", "Banana"]
-    candidates = ["A", "B", "C", "X", "Y", "Z"]
 
     ballot1 = dict(zip(candidates, [1, 1, 1, 0, 0, 0]))
 
@@ -31,9 +32,11 @@ def generate_approval_ballots():
     return ballots
 
 
-def generate_score_ballots():
+def generate_score_ballots(candidates=None):
     # Compose Ballots
-    candidates = ["Squash", "Potato", "Broccoli", "Blueberry", "Strawberry", "Banana"]
+    if candidates is None:
+        candidates = ["A", "B", "C", "D", "E", "F"]
+    # candidates = ["Squash", "Potato", "Broccoli", "Blueberry", "Strawberry", "Banana"]
     # candidates = ["🥕", "🥔", "🥦", "🫐", "🍓", "🍌"]
 
     ballot1 = dict(zip(candidates, [5, 5, 5, 0, 0, 0]))

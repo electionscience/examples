@@ -35,9 +35,13 @@ theme-darcula = "*"
 PuLP = "*"
 jupyterlab-language-pack-fr-FR = "*"
 jupyterlab-language-pack-zh-CN = "*"
+pytest = "*"
 
 [dev-packages]
 black = "*"
 
 [requires]
 python_version = "3.9"
+
+[scripts]
+tests = "pytest"

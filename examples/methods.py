@@ -1,9 +1,26 @@
 import pandas as pd
 import numpy as np
+from examples.proportionality_metrics import harmonic_utility, exhaustive_optimal
+from itertools import combinations
+
+
+def PAV(ballots: pd.DataFrame, seats: int):
+    def H(x):
+        return sum(1 / i for i in range(1, int(x) + 1))
+
+    best_score = 0
+    best_committee = None
+    for wset in combinations(ballots.columns, seats):
+
+        harmonic_score = ballots[list(wset)].sum(axis=1).map(H).sum()
+        if harmonic_score > best_score:
+            best_score, best_committee = harmonic_score, wset
+
+    return list(best_committee)
 
 
 def SPAV(ballots: pd.DataFrame, seats: int):
-    """Sequential Proportional Approvla Voting
+    """Sequential Proportional Approval Voting
     This system converts Approval Voting into a multi-round rule,
     selecting a candidate in each round and then reweighing the
     approvals for the subsequent rounds. The first candidate elected
@@ -122,7 +139,7 @@ def MES(ballots: pd.DataFrame, seats: int):
         weights[ballots[winner] == 1] = (
             weights[ballots[winner] == 1].subtract(prices[winner]).clip(0, 1)
         )
-        seated.append(w)
+        seated.append(winner)
 
     return seated
 
